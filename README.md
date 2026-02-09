@@ -44,15 +44,25 @@ To execute unit tests with the [Karma](https://karma-runner.github.io) test runn
 ng test
 ```
 
-## Running end-to-end tests
+## Configuración del Backend para CORS
 
-For end-to-end (e2e) testing, run:
+Para permitir que el frontend Angular se comunique con el backend sin problemas de CORS, es necesario instalar y configurar CORS.
 
 ```bash
-ng e2e
+npm install cors
+
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Modificar tu main.ts o server.ts del backend:
+
+```bash
+cors: {
+    origin: 'http://localhost:4200', // o "*" si quieres permitir todo
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  },
+
+```
 
 ## Additional Resources
 
