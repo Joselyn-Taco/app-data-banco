@@ -44,16 +44,16 @@ To execute unit tests with the [Karma](https://karma-runner.github.io) test runn
 ng test
 ```
 
-## Configuración del Backend para CORS
+## Backend Configuration for CORS
 
-Para permitir que el frontend Angular se comunique con el backend sin problemas de CORS, es necesario instalar y configurar CORS.
+To allow your Angular frontend to communicate with the backend without CORS issues, you need to install and configure CORS.
 
 ```bash
 npm install cors
 
 ```
 
-Modificar tu main.ts o server.ts del backend:
+Modify your backend main.ts or server.ts
 
 ```bash
 cors: {
