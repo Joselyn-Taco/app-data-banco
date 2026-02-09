@@ -1,0 +1,35 @@
+// sin icono solo css del boton
+.btn_default {
+  border-radius: 5px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.01s ease;
+  color: var(--color-primary);
+
+  //css adicional colores
+  &.btn_bg_secondary {
+    background-color: var(--color-secondary);
+  }
+  &.btn_bg_secondary:hover {
+    background-color: var(--secondary-btn-hover);
+    transform: scale(1.1);
+  }
+
+  &.btn_bg_gray {
+    background-color: var(--gray-btn);
+  }
+  &.btn_bg_gray:hover {
+    background-color: var(--gray-btn);
+    transform: scale(1.1);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

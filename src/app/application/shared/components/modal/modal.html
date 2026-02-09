@@ -1,0 +1,11 @@
+@if(abierto){
+<div class="modal-backdrop"></div>
+<div class="modal">
+  <h2>{{ titulo }}</h2>
+  <p>{{ mensaje }}</p>
+  <div class="actions">
+    <app-button label="Cancelar" customClass="btn_bg_gray" (click)="Oncancelar()"></app-button>
+    <app-button label="Confirmar" customClass="btn_bg_secondary" (click)="Onaceptar()"></app-button>
+  </div>
+</div>
+}

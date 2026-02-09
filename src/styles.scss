@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --color-primary: #102d4f;
+
+  --color-secondary: #ffe12f;
+  --secondary-btn-hover: #fbea66ed;
+
+  --gray: #b3b3b3;
+  --gray-hover: #b9b4b4b7;
+  --gray-text: #666666;
+  --gray-light: #f7f7f7;
+  --gray-bg-modal: #f5f5f5;
+  --gray-header: #efebeb;
+  --gray-scroll-bar: #888;
+  --gray-borders: #ddd;
+  --gray-btn: #d8d8d8;
+  --gray-btn-hover: #ddddddcc;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+input[type='text'] {
+  font-weight: 400;
+  height: 30px;
+  padding: 5px 20px;
+  border-radius: 5px;
+  border: solid 1px #ddd;
+
+  &:disabled,
+  &[readonly] {
+    opacity: 1;
+    cursor: not-allowed;
+  }
+}
+
+select {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  &:hover {
+    border: none;
+    outline: none;
+    box-shadow: none;
+  }
+  color: var(--color-primary);
+}

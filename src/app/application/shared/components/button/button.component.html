@@ -1,0 +1,8 @@
+<button
+  [ngStyle]="{ fontSize: size }"
+  [ngClass]="'btn_default ' + customClass"
+  [disabled]="disabled"
+  (click)="onClick()"
+>
+  <span>{{ label }}</span>
+</button>

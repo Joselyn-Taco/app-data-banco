@@ -1,0 +1,117 @@
+<div class="container_area">
+  <div class="container_title">
+    <img src="assets/icon_efectivo.png" alt="Efectivo" width="45px" />
+    <h3>BANCO</h3>
+  </div>
+
+  <div class="container_card">
+    <div class="card_accions">
+      <input
+        placeholder="Search.."
+        type="text"
+        name="search"
+        id="search"
+        [(ngModel)]="searchQuery"
+        (input)="filtrarReportes()"
+      />
+      <app-button
+        label="Ingresar"
+        customClass="btn_bg_secondary"
+        (click)="redirigirRuta('ingreso_producto')"
+      ></app-button>
+    </div>
+
+    <div class="card_table_continer">
+      <div class="card_table">
+        @if (dataPaginada.length) {
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Logo</th>
+              <th>Nombre del producto</th>
+              <th>
+                <div class="thTable">
+                  Descripción
+                  <img src="assets/icon_info.png" alt="Info" width="15" />
+                </div>
+              </th>
+              <th>
+                <div class="thTable">
+                  Fecha de liberación
+                  <img src="assets/icon_info.png" alt="Info" width="15" />
+                </div>
+              </th>
+              <th>
+                <div class="thTable">
+                  Fecha de reestructuración
+                  <img src="assets/icon_info.png" alt="Info" width="15" />
+                </div>
+              </th>
+              <th style="width: 25px"></th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (producto of dataPaginada; track producto.id) {
+            <tr>
+              <td>
+                <img [src]="producto.logo" alt="Logo Producto" width="25px" />
+              </td>
+              <td>{{ producto.name }}</td>
+              <td>{{ producto.description }}</td>
+              <td>{{ producto.date_release }}</td>
+              <td>{{ producto.date_revision }}</td>
+              <td>
+                <div class="dropdown" [class.open]="menuAbierto === producto.id">
+                  <button class="dropdown__toggle" (click)="toggleMenu(producto.id)">⋮</button>
+                  <ul class="dropdown__menu">
+                    <li><button (click)="editar(producto)">Editar</button></li>
+                    <li>
+                      <button (click)="eliminar(producto)">Eliminar</button>
+                    </li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+        } @if (dataPaginada.length === 0){
+        <p>No se han encontrado productos</p>
+        }
+      </div>
+      <div class="card_paginacion">
+        <div>
+          <span>{{ productos.length }} Resultados</span>
+        </div>
+
+        <div class="paginacion_btn_area">
+          <div class="btn_area">
+            <button (click)="prevPage()" [disabled]="currentPage === 1">&lt;</button>
+            <span>Página {{ currentPage }} de {{ totalPages }}</span>
+            <button
+              (click)="nextPage()"
+              [disabled]="currentPage === totalPages || productos.length === 0"
+            >
+              &gt;
+            </button>
+          </div>
+
+          <div class="select_area">
+            <select [(ngModel)]="pageSize" (change)="changePageSize(pageSize)">
+              <option *ngFor="let size of pageSizeOptions" [value]="size">
+                {{ size }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+@if(productoSelect.id != ''){
+<app-modal
+  [mensaje]="'¡Estas seguro de eliminar el producto ' + productoSelect.name + '?'"
+  (aceptar)="confirmacion($event)"
+  (cancelar)="confirmacion($event)"
+></app-modal>
+}

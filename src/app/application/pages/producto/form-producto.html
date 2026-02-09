@@ -1,0 +1,130 @@
+<div class="container_area">
+  <div class="container_title">
+    <img src="assets/icon_efectivo.png" alt="Efectivo" width="45px" />
+    <h3>BANCO</h3>
+  </div>
+  <div class="btn_atras" (click)="redirigirRuta('productos')">
+    <img src="assets/flecha.png" alt="Atras" width="25px" /> Atras
+  </div>
+
+  <div class="container_card">
+    <div class="card_area">
+      <div class="card_title">
+        <h2>Formulario de Registro</h2>
+      </div>
+      <div class="container_form">
+        <form class="formulario" [formGroup]="ingresoForm">
+          <!-- ID no editable -->
+          <div class="form-grupo">
+            <label for="id">ID</label>
+            <input
+              type="text"
+              id="id"
+              name="id"
+              formControlName="id"
+              minlength="3"
+              maxlength="10"
+              placeholder="ID"
+              [class.error]="campoInvalido('id')"
+            />
+            <div class="error_message" *ngIf="campoInvalido('id')">ID no válido!.</div>
+          </div>
+
+          <!-- Nombre -->
+          <div class="form-grupo">
+            <label for="nombre">Nombre</label>
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              formControlName="nombre"
+              minlength="5"
+              maxlength="100"
+              placeholder="Nombre"
+              [class.error]="campoInvalido('nombre')"
+            />
+            <div class="error_message" *ngIf="campoInvalido('nombre')">
+              El nombre es requerido!.
+            </div>
+          </div>
+
+          <!-- Descripción (ocupa ancho completo) -->
+          <div class="form-grupo">
+            <label for="descripcion">Descripción</label>
+            <textarea
+              id="descripcion"
+              name="descripcion"
+              formControlName="descripcion"
+              minlength="10"
+              maxlength="200"
+              placeholder="Descripción"
+              [class.error]="campoInvalido('descripcion')"
+            ></textarea>
+            <div class="error_message" *ngIf="campoInvalido('descripcion')">
+              La descripcion es requerida!.
+            </div>
+          </div>
+
+          <!-- Logo -->
+          <div class="form-grupo">
+            <label for="logo">Logo</label>
+            <input
+              type="text"
+              id="logo"
+              name="logo"
+              formControlName="logo"
+              placeholder="Ingresa la url del logo"
+              [class.error]="campoInvalido('logo')"
+            />
+            <div class="error_message" *ngIf="campoInvalido('logo')">El logo es requerido!.</div>
+          </div>
+
+          <!-- Fecha inicio -->
+          <div class="form-grupo">
+            <label for="fechaLiberacion">Fecha de inicio</label>
+            <input
+              type="date"
+              id="fechaLiberacion"
+              name="fechaLiberacion"
+              formControlName="fechaLiberacion"
+              [min]="minDate"
+              [class.error]="campoInvalido('fechaLiberacion')"
+            />
+            <div class="error_message" *ngIf="campoInvalido('fechaLiberacion')">
+              La fecha es requerido!.
+            </div>
+          </div>
+
+          <!-- Fecha fin -->
+          <div class="form-grupo">
+            <label for="fechaRevision">Fecha de fin</label>
+            <input
+              type="date"
+              id="fechaRevision"
+              name="fechaRevision"
+              formControlName="fechaRevision"
+              readonly
+            />
+          </div>
+        </form>
+        <div *ngIf="!idValido">
+          <p>{{ mensajeError }}</p>
+        </div>
+
+        <div class="btn_form_grupo">
+          <app-button
+            label="Reiniciar"
+            customClass="btn_bg_gray"
+            (click)="limpiarForm()"
+          ></app-button>
+          <app-button
+            label="Guardar"
+            customClass="btn_bg_secondary"
+            [disabled]="!ingresoForm.valid"
+            (click)="guardar()"
+          ></app-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
